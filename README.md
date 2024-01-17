@@ -38,3 +38,5 @@ Please leave any comments on this repl's [spotlight page here](https://replit.co
 The UI is subject to change (and still needs some real responsive work), so we'd appreciate any feedback there. 
 
 We're also trying to improve the overall dev experience, especially for beginners, so any feedback there is appreciated. 
+
+I have too many pets!
