@@ -33,12 +33,15 @@ contract RaiseTheStakes {
 
     // Function to set player ranking
     function setRank(uint256 _playerId, uint256 _ranking) external {
+      //add access control to prevent players from changing ranking without game approval
         require(msg.sender == players[_playerId].player, "Sender must be player's address");
         players[_playerId].ranking = _ranking;
     }
 
     // Function to set player reward percentage
     function setRewardPercentage(uint256 _playerId, uint256 _rewardPercentage) external {
+        //add access control to prevent players from changing reward percentage without game approval
+      
         players[_playerId].rewardPercentage = _rewardPercentage;
     }
 
