@@ -39,9 +39,5 @@ The UI is subject to change (and still needs some real responsive work), so we'd
 
 We're also trying to improve the overall dev experience, especially for beginners, so any feedback there is appreciated. 
 
-I have too many pets!
-
-So many pets
-
-another change
+hello world!
 
