@@ -19,17 +19,12 @@ contract RaiseTheStakes {
     mapping(address => bytes32) public playerLeafHashes;
 
     // Event triggered when a player's data is updated
-    event PlayerUpdate(
-        address indexed player,
-        uint256 ranking,
-        uint256 rewardPercentage,
-        uint256 stake,
-        uint256 items
-    );
+    event PlayerUpdate(address indexed player, uint256 ranking, uint256 rewardPercentage, uint256 stake, uint256 items);
     event PlayerUpdateRanking(address indexed player, uint256 ranking);
     event PlayerUpdateRewardPercentage(address indexed player, uint256 rewardPercentage);
     event PlayerUpdateStake(address indexed player, uint256 stake);
     event PlayerUpdateItems(address indexed player, uint256 items);
+    event GetPlayerInfo(address indexed player, uint256 ranking, uint256 rewardPercentage, uint256 stake, uint256 items);
 
     constructor(bytes32 _merkleRoot) {
         merkleRoot = _merkleRoot;
@@ -130,6 +125,25 @@ contract RaiseTheStakes {
         emit PlayerUpdate(_player, players[_player].ranking, players[_player].rewardPercentage, players[_player].stake, 
         players[_player].items);
     }
+
+  // Function to get player information
+  function getPlayerInfo(address _player) public view returns (
+      uint256 ranking,
+      uint256 rewardPercentage,
+      uint256 stake,
+      uint256 items
+  ) {
+      require(playerLeafHashes[_player] != bytes32(0), "Player does not exist");
+
+      PlayerInfo storage player = players[_player];
+
+      return (
+          player.ranking,
+          player.rewardPercentage,
+          player.stake,
+          player.items
+      );
+  }
 
     // Function to verify a player's data using a Merkle proof
     function verifyPlayerData(
