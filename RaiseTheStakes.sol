@@ -12,7 +12,7 @@ contract RaiseTheStakes {
 
     PlayerInfo[] public players;
 
-    // Merkle root of the player data
+    // Merkle root of the players data
     bytes32 public merkleRoot;
 
     // Mapping of player addresses to their Merkle leaf hash
@@ -25,7 +25,7 @@ contract RaiseTheStakes {
         merkleRoot = _merkleRoot;
     }
 
-    // Function to add a new player
+    // Function to add new player
     function addPlayer(
         address _player,
         uint256 _rewardPercentage,
