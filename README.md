@@ -46,3 +46,34 @@ please work now...
 didn't work that time...
 
 ok trying one more time and then I'm taking a break
+
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```
+/
+├── contracts/
+│   ├── examples/
+│   │   ├── NFT.sol
+│   │   ├── token.sol
+│   │   └── wallet.sol
+│   ├── contract.sol
+│   ├── Game.sol
+│   ├── GHO.sol
+│   ├── RaiseTheStakes.sol
+│   └── RaiseTheStakesTester.sol
+├── scripts/
+│   ├── borrowgho.js
+│   └── test.js
+├── tools /
+│   ├── index.js
+│   ├── ui.jsx
+│   └── README.md
+├── .sniffcjs
+├── .upgrade-vite.cjs
+├── .vite.config.js
+├── package.json
+└── README.md
+```
