@@ -3,8 +3,8 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@aave/protocol-v2/contracts/interfaces/ILendingPool.sol";
-import "@aave/protocol-v2/contracts/interfaces/IAToken.sol";
+import "@aave/core-v3/contracts/interfaces/IPool.sol";
+import "@aave/core-v3/contracts/interfaces/IAToken.sol";
 
 contract GameContract is Ownable {
     IERC20 public immutable aaveToken;  // Aave's interest-bearing token (aToken)
