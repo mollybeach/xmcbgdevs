@@ -73,7 +73,7 @@ To get started with the RaiseTheStakes DApp, follow these steps:
    npx hardhat run scripts/deploy.js
 4. Start the DApp:
    ```bash
-  npm start
+   npx start
 5. Visit http://localhost:3000 in your web browser to interact with the DApp.
 
 ## 🧪 Testing the Contract
