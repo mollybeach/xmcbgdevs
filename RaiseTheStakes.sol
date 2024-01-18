@@ -1,10 +1,7 @@
-//Wills COMMIT TEST
 // SPDX-License-Identifier: MIT
-//Wills test comments
 pragma solidity ^0.8.0;
 
 contract RaiseTheStakes {
-
     struct PlayerInfo {
         address player;
         uint256 ranking;
@@ -14,6 +11,19 @@ contract RaiseTheStakes {
     }
 
     PlayerInfo[] public players;
+
+    // Merkle root of the player data
+    bytes32 public merkleRoot;
+
+    // Mapping of player addresses to their Merkle leaf hash
+    mapping(address => bytes32) public playerLeafHashes;
+
+    // Event triggered when a player's data is updated
+    event PlayerUpdated(address indexed player, uint256 ranking, uint256 rewardPercentage);
+
+    constructor(bytes32 _merkleRoot) {
+        merkleRoot = _merkleRoot;
+    }
 
     // Function to add a new player
     function addPlayer(
@@ -31,45 +41,70 @@ contract RaiseTheStakes {
         });
 
         players.push(newPlayer);
+
+        // Calculate the Merkle leaf hash for the new player and store it
+        bytes32 leafHash = calculateLeafHash(newPlayer);
+        playerLeafHashes[_player] = leafHash;
+
+        // Emit an event indicating the player's data has been updated
+        emit PlayerUpdated(_player, newPlayer.ranking, newPlayer.rewardPercentage);
     }
 
-    // Function to set player ranking
-    function setRank(uint256 _playerId, uint256 _ranking) external {
-      //add access control to prevent players from changing ranking without game approval
-        require(msg.sender == players[_playerId].player, "Sender must be player's address");
-        players[_playerId].ranking = _ranking;
+    // Function to update a player's ranking and reward percentage
+    function updatePlayer(address _player, uint256 _ranking, uint256 _rewardPercentage) public {
+        // Check if the player exists
+        require(playerLeafHashes[_player] != bytes32(0), "Player does not exist");
+
+        // Update the player's ranking and reward percentage
+        players[_getPlayerIndex(_player)].ranking = _ranking;
+        players[_getPlayerIndex(_player)].rewardPercentage = _rewardPercentage;
+
+        // Recalculate the Merkle leaf hash for the updated player
+        bytes32 leafHash = calculateLeafHash(players[_getPlayerIndex(_player)]);
+        playerLeafHashes[_player] = leafHash;
+
+        // Emit an event indicating the player's data has been updated
+        emit PlayerUpdated(_player, _ranking, _rewardPercentage);
     }
 
-    // Function to set player reward percentage
-    function setRewardPercentage(uint256 _playerId, uint256 _rewardPercentage) external {
-        //add access control to prevent players from changing reward percentage without game approval
-      
-        players[_playerId].rewardPercentage = _rewardPercentage;
+    // Function to verify a player's data using a Merkle proof
+    function verifyPlayerData(
+        address _player,
+        uint256 _ranking,
+        uint256 _rewardPercentage,
+        bytes32[] memory proof
+    ) public view returns (bool) {
+        // Calculate the Merkle root based on the provided data
+        bytes32 computedRoot = _calculateMerkleRoot(_player, _ranking, _rewardPercentage);
+
+        // Verify that the computed root matches the stored Merkle root
+        return computedRoot == merkleRoot;
     }
 
-    function getNumberOfPlayers() public view returns (uint256) {
-        return players.length;
+    // Internal function to calculate the Merkle leaf hash for a player
+    function calculateLeafHash(PlayerInfo memory _playerInfo) internal pure returns (bytes32) {
+        return keccak256(abi.encodePacked(_playerInfo.player, _playerInfo.ranking, _playerInfo.rewardPercentage));
     }
 
-    function getPlayerInfo(uint256 index)
-        public
-        view
-        returns (
-            address player,
-            uint256 ranking,
-            uint256 rewardPercentage,
-            uint256 stake,
-            uint256 items
-        )
-    {
-        require(index < players.length, "Index is out of bounds");
-        PlayerInfo storage playerInfo = players[index];
-        return (
-            playerInfo.player,
-            playerInfo.ranking,
-            playerInfo.rewardPercentage,
-            playerInfo.stake,
-            playerInfo.items
-        );
+    // Internal function to calculate the Merkle root based on a player's data
+    function _calculateMerkleRoot(
+        address _player,
+        uint256 _ranking,
+        uint256 _rewardPercentage
+    ) internal pure returns (bytes32) {
+        bytes32 leafHash = keccak256(abi.encodePacked(_player, _ranking, _rewardPercentage));
+
+        // Placeholder for more complex Merkle tree calculation logic
+        return leafHash;
+    }
+
+    // Internal function to get the index of a player in the players array
+    function _getPlayerIndex(address _player) internal view returns (uint256) {
+        for (uint256 i = 0; i < players.length; i++) {
+            if (players[i].player == _player) {
+                return i;
+            }
+        }
+        revert("Player not found");
     }
 }
