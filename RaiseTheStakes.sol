@@ -12,7 +12,7 @@ contract RaiseTheStakes {
 
     PlayerInfo[] public players;
 
-    // Merkle root of the players data
+    // Merkle root of the player data
     bytes32 public merkleRoot;
 
     // Mapping of player addresses to their Merkle leaf hash
