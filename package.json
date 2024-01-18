@@ -1,5 +1,12 @@
 {
+  "name": "xmcbgdevs",
+  "author": "Molly Beach Katie Kirby Jason Cunningham Mark Watson Will Fisher",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node start.js"
+  },
   "dependencies": {
+    "@aave/core-v3": "^1.18.0",
     "@openzeppelin/contracts": "^4.3.2",
     "@replit/database": "^2.0.1",
     "@vitejs/plugin-react": "^2.0.0",
