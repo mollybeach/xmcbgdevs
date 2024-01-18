@@ -65,6 +65,27 @@ To get started with the RaiseTheStakes DApp, follow these steps:
 1. Install project dependencies:
    ```bash
    npm install
+2. Compile the smart contract:
+   ```bash
+   npx hardhat compile
+3. Deploy the smart contract:
+   ```bash
+   npx hardhat run scripts/deploy.js
+4. Start the DApp:
+   ```bash
+  npm start
+5. Visit http://localhost:3000 in your web browser to interact with the DApp.
+
+## 🧪 Testing the Contract
+
+To run tests on the RaiseTheStakes.sol smart contract, use the following commands:
+
+1. Compile the smart contract:
+   ```bash
+   npx hardhat compile
+2. Run the contract tests:
+   ```bash
+   npx hardhat test
 
 ## 🚀 Project Structure
 
