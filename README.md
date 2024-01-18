@@ -63,7 +63,21 @@ RaiseTheStakes is a decentralized application (DApp) built on the Ethereum block
 
 - **Microtip**: Microtip is integrated for easy and convenient tipping within the DApp.
 
+## 📜 RaiseTheStakes Smart Contract 
+
 This combination of technologies ensures a robust, secure, and user-friendly experience for players participating in the RaiseTheStakes DApp.
+
+The `RaiseTheStakes.sol` smart contract is a core component of this project. It includes features such as player information tracking, ranking, reward percentages, stakes, and items.
+
+- You can find the contract code in the `contracts/RaiseTheStakes.sol` file.
+
+## 💻 Getting Started
+
+To get started with the RaiseTheStakes DApp, follow these steps:
+
+1. Install project dependencies:
+   ```bash
+   npm install
 
 ## 🚀 Project Structure
 
