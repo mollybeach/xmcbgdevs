@@ -71,9 +71,9 @@ Inside of your Astro project, you'll see the following folders and files:
 │   ├── index.js
 │   ├── ui.jsx
 │   └── README.md
-├── .sniffcjs
-├── .upgrade-vite.cjs
-├── .vite.config.js
+├── sniff.cjs
+├── upgrade-vite.cjs
+├── vite.config.js
 ├── package.json
 └── README.md
 ```
