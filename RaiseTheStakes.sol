@@ -21,6 +21,8 @@ contract RaiseTheStakes {
     event PlayerUpdateRewardPercentage(address indexed player, uint256 rewardPercentage);
     event PlayerUpdateStake(address indexed player, uint256 stake);
     event PlayerUpdateItems(address indexed player, uint256 items);
+
+  // Event triggered when a player's address is called 
     event GetPlayerInfo(address indexed player);
 
     constructor() {}
