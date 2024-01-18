@@ -1,4 +1,4 @@
-# RaiseTheStakes DApp
+## 📜 RaiseTheStakes DApp
 
 ## Project Overview
 
@@ -18,7 +18,20 @@ RaiseTheStakes is a decentralized application (DApp) built on the Ethereum block
 
 5. **Transparency**: All gaming-related data and transactions are recorded on the Ethereum blockchain, ensuring transparency and preventing manipulation.
 
-### Technologies Used
+### 🔧 Technologies Used
+
+- [ethers](https://github.com/ethers-io/ethers.js/): Ethereum library for interacting with smart contracts.
+- [evm-chains](https://github.com/ethereum-lists/chains): Ethereum network chain data.
+- [express](https://expressjs.com/): Web framework for building APIs.
+- [json-stringify-safe](https://www.npmjs.com/package/json-stringify-safe): JSON stringify with circular reference support.
+- [react](https://reactjs.org/): JavaScript library for building user interfaces.
+- [react-dom](https://reactjs.org/docs/react-dom.html): React package for working with the DOM.
+- [react-feather](https://feathericons.com/): Feather icons for React components.
+- [solc](https://docs.soliditylang.org/en/v0.8.17/using-the-compiler.html): Solidity compiler for Ethereum smart contracts.
+- [styled-components](https://styled-components.com/): Styling library for React.
+- [use-local-storage](https://www.npmjs.com/package/use-local-storage): React hook for local storage.
+- [vite](https://vitejs.dev/): Fast build tool for JavaScript and TypeScript projects.
+
 
 - **Ethereum Blockchain**: The core of the project relies on Ethereum smart contracts to manage player data, staking, rankings, and rewards.
 
