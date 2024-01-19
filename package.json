@@ -1,0 +1,58 @@
+{
+    "name": "xmcbgdevs",
+    "author": "Molly Beach Katie Kirby Jason Cunningham Mark Watson Will Fisher",
+    "version": "1.0.0",
+    "description": "Hackathon Raise The Stakes game contract is a suitable for games or applications where players can participate, earn rewards, and interact with their in-game assets.",
+    "main": "index.js",
+    "scripts": {
+      "dev": "cd ./client && next dev",
+      "build": "cd ./client && next build",
+      "start": "cd ./client && next start",
+      "lint": "cd ./client && next lint"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xmcbgdevs/xmcbgdevs/client"
+    },
+    "license": "ISC",
+    "dependencies": {
+      "@testing-library/jest-dom": "^6.2.0",
+      "@testing-library/react": "^14.1.2",
+      "@testing-library/user-event": "^14.5.2",
+      "@types/jest": "^29.5.11",
+      "@types/node": "^20.11.5",
+      "@types/react": "^18.2.48",
+      "@types/react-dom": "^18.2.18",
+      "@web3modal/wagmi": "^3.5.6",
+      "connectkit": "^1.6.0",
+      "eslint": "^8.56.0",
+      "eslint-config-next": "^14.1.0",
+      "next": "^14.1.0",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-scripts": "^5.0.1",
+      "typescript": "^5.3.3",
+      "viem": "^1.21.4",
+      "wagmi": "^1.4.13",
+      "web-vitals": "^3.5.1"
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    },
+    "devDependencies": {
+      "@babel/core": "^7.23.7",
+      "@babel/preset-env": "^7.23.8",
+      "@babel/preset-react": "^7.23.3"
+    }
+  }
+  
+  
