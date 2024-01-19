@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import vercel from "../public/vercel.svg";
-import next from "../public/next.svg";
+import vercel from "./public/vercel.svg";
+import next from "./public/next.svg";
 
 export default function Home() {
   return (
