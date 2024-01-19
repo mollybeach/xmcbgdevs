@@ -43,6 +43,7 @@ amplify-build-config.json
 amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
+.env
 **.sample
 
 # Ignore local development config files
