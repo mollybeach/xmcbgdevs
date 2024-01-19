@@ -10,6 +10,7 @@ contract GameContract is Ownable {
     IERC20 public immutable aaveToken;  // Aave's interest-bearing token (aToken)
     ILendingPool public immutable lendingPool;
     IERC20 public immutable ghoToken;  // GHO token address
+  
 
     struct PlayerInfo {
         uint256 ranking;
@@ -28,10 +29,10 @@ contract GameContract is Ownable {
     event PlayerRewardPercentageSet(address indexed player, uint256 newRewardPercentage);
     event RewardAmountSet(uint256 totalRewardAmount);
 
-    modifier onlyGameManager() {
-        require(owner() == msg.sender, "Only the game manager can call this function");
-        _;
-    }
+    // modifier onlyGameManager() {
+    //     require(owner() == msg.sender, "Only the game manager can call this function");
+    //     _;
+    // }
 
     constructor(
         address _aaveToken,
@@ -41,6 +42,7 @@ contract GameContract is Ownable {
         aaveToken = IERC20(_aaveToken);
         lendingPool = ILendingPool(_lendingPool);
         ghoToken = IERC20(_ghoToken);
+    
     }
 
     function registerPlayer(uint256 _ranking, uint256 _rewardPercentage) external {
@@ -57,21 +59,21 @@ contract GameContract is Ownable {
         emit PlayerRegistered(msg.sender, _ranking, _rewardPercentage);
     }
 
-    function setPlayerRanking(address player, uint256 newRanking) external onlyGameManager {
+    function setPlayerRanking(address player, uint256 newRanking) external onlyOwner {
         require(players[player].ranking != 0, "Player not registered");
         players[player].ranking = newRanking;
 
         emit PlayerRankingSet(player, newRanking);
     }
 
-    function setPlayerRewardPercentage(address player, uint256 newRewardPercentage) external onlyGameManager {
+    function setPlayerRewardPercentage(address player, uint256 newRewardPercentage) external onlyOwner {
         require(players[player].ranking != 0, "Player not registered");
         players[player].rewardPercentage = newRewardPercentage;
 
         emit PlayerRewardPercentageSet(player, newRewardPercentage);
     }
 
-    function setRewardAmount(uint256 _totalRewardAmount) external onlyGameManager {
+    function setRewardAmount(uint256 _totalRewardAmount) external onlyOwner {
         require(_totalRewardAmount > 0, "Invalid reward amount");
 
         totalRewardAmount = _totalRewardAmount;
@@ -128,4 +130,26 @@ contract GameContract is Ownable {
     }
 
     // Additional functions for managing items, game logic, etc., can be added as needed
+
+  function optimizeInterestRate(address aToken1, address aToken2) external view returns (address) {
+      address[] memory markets = new address[](2); // Assuming two markets, adjust as needed
+      markets[0] = address(aToken1);
+      markets[1] = address(aToken2);
+
+      uint256 maxInterestRate = 0;
+      address targetMarket = address(0);
+
+      for (uint256 i = 0; i < markets.length; i++) {
+          IReserveData reserveData = aavePool.getReserveData(markets[i]);
+          uint256 interestRate = reserveData.variableBorrowRate;
+
+          if (interestRate > maxInterestRate) {
+              maxInterestRate = interestRate;
+              targetMarket = markets[i];
+          }
+      }
+
+      return targetMarket;
+  }
+  
 }
