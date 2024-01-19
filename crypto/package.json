@@ -1,5 +1,6 @@
 {
   "name": "xmcbgdevs",
+  "author": "Molly Beach Katie Kirby Jason Cunningham Mark Watson Will Fisher",
   "version": "1.0.0",
   "description": "Hackathon Raise The Stakes game contract is a suitable for games or applications where players can participate, earn rewards, and interact with their in-game assets.",
   "main": "index.js",
