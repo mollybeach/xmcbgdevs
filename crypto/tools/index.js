@@ -12,6 +12,7 @@ const db = new ReplitDB();
 async function init(output) {
   const app = express();
   const server = http.createServer(app);
+  console.log("running")
 
   const vite = await createServer({
     plugins: [reactRefresh()],
@@ -43,7 +44,6 @@ async function init(output) {
         <body>
           <div id="root">Loading...</div>
           <script type="module" src="/tools/ui.jsx"></script>
-        
         </body>
       </html>
     `
@@ -201,6 +201,5 @@ function toJS(output) {
 
   return { contracts };
 }
-
 init();
 console.log("Done!");

@@ -5,10 +5,10 @@ const lendingPoolAddress = '0x...';
 const ghoTokenAddress = '0x...';
 const targetTokenAddress = '0x...';
 
-const provider = new ethers.providers.JsonRpcProvider('https://mainnet.infura.io/v3/YOUR_INFURA_API_KEY');
-const signer = new ethers.Wallet('YOUR_PRIVATE_KEY', provider); // Replace with your private key
+const provider = new ethers.providers.JsonRpcProvider('https://eth-sepolia.g.alchemy.com/v2/process.env.ALCHEMY_API_KEY');
+const signer = new ethers.Wallet('const mySecret = process.env.TEAM_KEY', provider); // Replace with your private key
 
-const lendingPool = new ethers.Contract(lendingPoolAddress, ['function deposit()'], signer
+const lendingPool = new ethers.Contract(lendingPoolAddress, ['function deposit()'], signer);
 const ghoToken = new ethers.Contract(ghoTokenAddress, ['function approve(address spender, uint256 amount)'], signer);
                                       
 
@@ -97,5 +97,4 @@ monitorAndAdjust();
     // Example: Claim rewards from Aave incentives controller
     const claimRewardsTx = await incentivesController.claimRewards();
     await claimRewardsTx.wait();
-
 
