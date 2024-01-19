@@ -39,11 +39,13 @@ jobs:
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
+            cd app   # Navigate into the 'app' directory
             exit 0
           elif [ -f "${{ github.workspace }}/app/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            cd app   # Navigate into the 'app' directory
             exit 0
           else
             echo "Unable to determine package manager"
@@ -79,7 +81,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./out
+          path: ./out/app
 
   # Deployment job
   deploy:
