@@ -25,8 +25,10 @@ const nextConfig = {
 	 * @see https://nextjs.org/docs/pages/api-reference/components/image#unoptimized
 	 */
 	images: {
-	  unoptimized: true,
-	},
+		loader: 'akamai',
+		path: '',
+	  },
+	  assetPrefix: './',
   };
   
   module.exports = nextConfig;
