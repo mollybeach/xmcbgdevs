@@ -5,10 +5,10 @@
     "description": "Hackathon Raise The Stakes game contract is a suitable for games or applications where players can participate, earn rewards, and interact with their in-game assets.",
     "main": "index.js",
     "scripts": {
-      "dev": "cd ./client && npm run dev",
-      "build": "cd ./client && npm run build",
-      "start": "cd ./client && npm run start",
-      "lint": "cd ./client && npm run lint"
+      "dev": "cd ./app && npm run dev",
+      "build": "cd ./app && npm run build",
+      "start": "cd ./app && npm run start",
+      "lint": "cd ./app && npm run lint"
     },
     "repository": {
       "type": "git",

@@ -19,7 +19,7 @@ async function init(output) {
     server: {
       middlewareMode: "true",
       hmr: {
-        clientPort: 443,
+        appPort: 443,
         server: server,
       },
     },

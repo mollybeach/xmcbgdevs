@@ -97,7 +97,7 @@ Inside of your project, you'll see the following folders and files:
 │   └── workflows/
 │       ├── nextjs.yml
 │       └── deploy.yml
-├── client/
+├── app/
 │   ├── next
 │   ├── app/
 │   │   ├── favicon.ico
