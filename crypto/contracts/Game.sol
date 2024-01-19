@@ -1,14 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+// import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@aave/core-v3/contracts/interfaces/IPool.sol";
 import "@aave/core-v3/contracts/interfaces/IAToken.sol";
+import "@aave/core-v3/contracts/interfaces/IReserveInterestRateStrategy.sol";
+import {DataTypes} from '@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol';
 
-contract GameContract is Ownable {
+contract GameContract is Ownable(msg.sender) {
     IERC20 public immutable aaveToken;  // Aave's interest-bearing token (aToken)
-    ILendingPool public immutable lendingPool;
+    IPool public immutable lendingPool;
     IERC20 public immutable ghoToken;  // GHO token address
   
 
@@ -29,10 +31,6 @@ contract GameContract is Ownable {
     event PlayerRewardPercentageSet(address indexed player, uint256 newRewardPercentage);
     event RewardAmountSet(uint256 totalRewardAmount);
 
-    // modifier onlyGameManager() {
-    //     require(owner() == msg.sender, "Only the game manager can call this function");
-    //     _;
-    // }
 
     constructor(
         address _aaveToken,
@@ -40,9 +38,8 @@ contract GameContract is Ownable {
         address _ghoToken
     ) {
         aaveToken = IERC20(_aaveToken);
-        lendingPool = ILendingPool(_lendingPool);
+        lendingPool = IPool(_lendingPool);
         ghoToken = IERC20(_ghoToken);
-    
     }
 
     function registerPlayer(uint256 _ranking, uint256 _rewardPercentage) external {
@@ -136,12 +133,12 @@ contract GameContract is Ownable {
       markets[0] = address(aToken1);
       markets[1] = address(aToken2);
 
-      uint256 maxInterestRate = 0;
-      address targetMarket = address(0);
+      uint256 maxInterestRate;
+      address targetMarket;
 
       for (uint256 i = 0; i < markets.length; i++) {
-          IReserveData reserveData = aavePool.getReserveData(markets[i]);
-          uint256 interestRate = reserveData.variableBorrowRate;
+          DataTypes.ReserveData memory reserveData = lendingPool.getReserveData(markets[i]);
+          uint256 interestRate = reserveData.currentVariableBorrowRate;
 
           if (interestRate > maxInterestRate) {
               maxInterestRate = interestRate;
