@@ -4,7 +4,7 @@
 
 ### Description
 
-RaiseTheStakes is  decentralized application (DApp) built on the Ethereum blockchain that allows users to participate in a competitive gaming environment where they can stake tokens, earn rewards, and improve their rankings. This DApp leverages the power of smart contracts to ensure transparency, security, and fairness in the gaming ecosystem.
+RaiseTheStakes is a decentralized application (DApp) built on the Ethereum blockchain that allows users to participate in a competitive gaming environment where they can stake tokens, earn rewards, and improve their rankings. This DApp leverages the power of smart contracts to ensure transparency, security, and fairness in the gaming ecosystem.
 
 ### 🔑 Key Features
 
