@@ -26,9 +26,9 @@ const nextConfig = {
 	 */
 	images: {
 		loader: 'akamai',
-		path: '',
-	  },
-	  assetPrefix: './',
+		path: '/_next/',
+	},
+	assetPrefix: './',
   };
   
   module.exports = nextConfig;
