@@ -1,0 +1,15 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "client for hackathon project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xmcbgdevs/xmcbgdevs/client"
+  },
+  "author": "Molly Beach Katie Kirby Jason Cunningham Mark Watson Will Fisher",
+  "license": "ISC"
+}
