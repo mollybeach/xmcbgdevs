@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "client for hackathon project",
+  "description": "Client for xmcbgdevs Hackathon Raise The Stakes game contract is a suitable for games or applications where players can participate, earn rewards, and interact with their in-game assets.",
   "main": "index.js",
 	"scripts": {
 		"dev": "next dev",

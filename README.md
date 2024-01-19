@@ -92,29 +92,59 @@ To run tests on the RaiseTheStakes.sol smart contract, use the following command
 Inside of your project, you'll see the following folders and files:
 
 ```
-/
-├── contracts/
-│   ├── examples/
-│   │   ├── NFT.sol
-│   │   ├── token.sol
-│   │   └── wallet.sol
-│   ├── contract.sol
-│   ├── Game.sol
-│   ├── GHO.sol
-│   ├── RaiseTheStakes.sol
-│   └── RaiseTheStakesTester.sol
-├── scripts/
-│   ├── borrowgho.js
-│   └── test.js
-├── tools /
-│   ├── index.js
-│   ├── ui.jsx
+/xmcbgdevs
+├── .github/
+│   └── workflows/
+│       ├── nextjs.yml
+│       └── deploy.yml
+├── client/
+│   ├── next
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── global.css
+│   │   ├── layout.tsx
+│   │   ├── page.module.css
+│   │   └── page.tsx
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── logo.svg
+│   │   ├── pattern.svg
+│   │   ├── robots.txt
+│   │   ├── vercel.svg
+│   │   └── index.html
+│   ├── next-env.d.ts
+│   ├── next.config.js
+│   ├── package.json
+│   ├── README.md
+│   └── tsconfig.json
+├── crypto/
+│   ├── contracts/
+│   │   ├── examples/
+│   │   │   ├── NFT.sol
+│   │   │   ├── token.sol
+│   │   │   └── wallet.sol
+│   │   ├── contract.sol
+│   │   ├── Game.sol
+│   │   ├── GHO.sol
+│   │   ├── RaiseTheStakes.sol
+│   │   └── RaiseTheStakesTester.sol
+│   ├── scripts/
+│   │   ├── borrowgho.js
+│   │   └── test.js
+│   ├── tools /
+│   │   ├── index.js
+│   │   ├── ui.jsx
+│   │   └── README.md
+│   ├── sniff.cjs
+│   ├── upgrade-vite.cjs
+│   ├── vite.config.js
+│   ├── package.json
 │   └── README.md
-├── sniff.cjs
-├── upgrade-vite.cjs
-├── vite.config.js
+├── .env
+├── .gitignore
 ├── package.json
 └── README.md
+
 ```
 # Replit Solidity Template
 Welcome to the world of Ethereum and Web3! This is a beta template for Solidity development on Replit. Solidity is the language used to create Smart Contracts, which are programs that run on the Ethereum Blockchain.
