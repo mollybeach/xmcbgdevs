@@ -1,37 +1,30 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies and Testing
 /node_modules
 /.pnp
 .pnp.js
-
-# testing
 /coverage
 
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Production
 /build
 
-# misc
+# Miscellaneous
 .DS_Store
 *.pem
-
-# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# vercel
 .vercel
-
-# typescript
 *.tsbuildinfo
 
-#amplify-do-not-edit-begin
+# Debug
+# Add any additional debug-related patterns here if needed
+
+# Amplify - Do Not Edit
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/logs
@@ -51,4 +44,6 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 **.sample
-#amplify-do-not-edit-end
+
+# Ignore local development config files
+config.json
