@@ -1,6 +1,7 @@
 ## 📜 RaiseTheStakes DApp
 
-## Deploy Next.js to Github Pages with Github Actions. [View the deployed app](https://xmcbgdevs.github.io/xmcbgdevs/) 🚀
+## Deployed xmcbgdevs to Github Pages with Github Actions. 
+## [View the deployed app](https://xmcbgdevs.github.io/xmcbgdevs/) 🚀
 
 ## Project Overview
 
