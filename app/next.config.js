@@ -25,16 +25,8 @@ const nextConfig = {
 	 * @see https://nextjs.org/docs/pages/api-reference/components/image#unoptimized
 	 */
 	images: {
-		formats: ["image/avif", "image/webp"],
-		remotePatterns: [
-		  {
-			protocol: "https",
-			hostname: "assets.vercel.com",
-			port: "",
-			pathname: "/image/upload/**",
-		  },
-		],
-	  },
+	  unoptimized: true,
+	},
   };
   
   module.exports = nextConfig;

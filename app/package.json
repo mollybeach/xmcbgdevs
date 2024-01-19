@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "app for xmcbgdevs Hackathon Raise The Stakes game contract is a suitable for games or applications where players can participate, earn rewards, and interact with their in-game assets.",
   "main": "index.js",
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xmcbgdevs/xmcbgdevs/app"
@@ -50,6 +50,9 @@
   "devDependencies": {
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.8",
-    "@babel/preset-react": "^7.23.3"
+    "@babel/preset-react": "^7.23.3",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1"
   }
 }
