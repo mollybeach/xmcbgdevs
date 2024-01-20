@@ -2,8 +2,20 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true, // https://tailwindcss.com/docs/configuration#important
   darkMode: ["class"],
   content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
+    "./data/**/*.{js,ts,jsx,tsx}",
+    "./content/**/*.{js,ts,jsx,tsx}",
+    "./utils/**/*.{js,ts,jsx,tsx}",
+    "./components/ui/**/*.{js,ts,jsx,tsx}"
+  ], 
   theme: {
     container: {
       center: true,
