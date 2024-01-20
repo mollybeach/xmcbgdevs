@@ -1,10 +1,14 @@
+// path: tailwind.config.js
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   important: true, // https://tailwindcss.com/docs/configuration#important
-  darkMode: ["class"],
-  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  darkMode: "class",
+  purge: {
+    enabled: process.env.NODE_ENV === "production",
+    content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  },
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",

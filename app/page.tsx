@@ -1,3 +1,4 @@
+// path: webapp/app/page.tsx
 'use client';
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
@@ -12,6 +13,9 @@ import { ConnectKitButton } from 'connectkit';
 import { WagmiConfig, createConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { ConnectKitProvider, getDefaultConfig } from 'connectkit';
+import "tailwindcss/tailwind.css"; // You may need to adjust the import path based on your project structure
+import "@/styles/globals.css";
+
 
 
 import {

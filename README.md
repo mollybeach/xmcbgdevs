@@ -100,6 +100,78 @@ Inside of your project, you'll see the following folders and files:
 │   └── workflows/
 │       ├── nextjs.yml
 │       └── deploy.yml
+├── next
+├── app/
+│   ├── favicon.ico
+│   ├── global.css
+│   ├── layout.tsx
+│   ├── page.module.css
+│   └── page.tsx
+├── components/
+│   ├── ui/
+│   │   ├── avatar.tsx
+│   │   ├── button.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   ├── sepertor.tsx
+│   ├── action-button.tsx
+│   ├── ConnectButton.tsx
+│   ├── date-range.tsx
+│   ├── footer.tsx
+│   ├── header.tsx
+│   └── sidebar.tsx
+├── crypto/
+│   ├── contracts/
+│   │   ├── examples/
+│   │   │   ├── NFT.sol
+│   │   │   ├── token.sol
+│   │   │   └── wallet.sol
+│   │   ├── contract.sol
+│   │   ├── Game.sol
+│   │   ├── GHO.sol
+│   │   ├── RaiseTheStakes.sol
+│   │   └── RaiseTheStakesTester.sol
+│   ├── scripts/
+│   │   ├── borrowgho.js
+│   │   └── test.js
+│   ├── tools /
+│   │   ├── index.js
+│   │   ├── ui.jsx
+│   │   └── README.md
+│   ├── sniff.cjs
+│   ├── upgrade-vite.cjs
+│   ├── vite.config.js
+│   ├── package.json
+│   └── README.md
+├── lib/
+│   ├── customWalletTheme.js
+│   ├── data.ts
+│   └── utils.ts
+├── public/
+│   ├── favicon.ico
+│   ├── next.svg
+│   └── vercel.svg
+├── styles/
+│   └── global.css
+├── .env
+├── .eslintrc.js
+├── .gitignore
+├── .gitignore
+├── next-env.d.ts
+├── next.config.js
+├── package.lock.json
+├── package.json
+├──postcss.config.js
+├── README.md
+├── package.json
+├── tsconfig.json
+└── tailwind.config.js
+
+
+/xmcbgdevs
+├── .github/
+│   └── workflows/
+│       ├── nextjs.yml
+│       └── deploy.yml
 ├── app/
 │   ├── next
 │   ├── app/
