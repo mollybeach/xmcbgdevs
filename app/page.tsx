@@ -12,7 +12,7 @@ import { ConnectKitButton } from 'connectkit';
 import { WagmiConfig, createConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { ConnectKitProvider, getDefaultConfig } from 'connectkit';
-
+import MintyMan  from "@/components/MintyMan";
 import "@/styles/globals.css";
 
 import {
@@ -40,13 +40,10 @@ export default function Home() {
     <div className="md:max-w-3xl mx-auto md:mt-8 ">
       <Navbar />
       <div className="flex flex-col md:flex-row my-10 mx-10 md:mx-0 space-x-0 md:space-x-10 space-y-10 md:space-y-0 ">
-
         <Sidebar />
         <div className="md:min-w-[65vh] min-w-full space-y-10">
           {/* Hero */}
           <section id="home" key="home" className="space-y-5">
- 
-
             <div className="text-2xl font-bold tracking-tight">
               {marketingHeadlines.mainHeadline}
             </div>
@@ -69,16 +66,11 @@ export default function Home() {
                 <h3 className="font-medium leading-none">
                   {aboutYou.yearsOfExperience}
                 </h3>
-                <p className="text-xs text-muted-foreground">Experience</p>
-              </div>
-              <div className="space-y-1">
-                <h3 className="font-medium leading-none">
-                  {aboutYou.location}
-                </h3>
-                <p className="text-xs text-muted-foreground">Location</p>
+                
               </div>
             </div>
             <div className="space-y-1">
+            <MintyMan />
               <div className="space-y-2">
                 {skills.map((skill) => (
                   <SkillOutline
