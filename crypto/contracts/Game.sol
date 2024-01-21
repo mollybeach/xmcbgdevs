@@ -6,18 +6,19 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@aave/core-v3/contracts/interfaces/IPool.sol";
 import "@aave/core-v3/contracts/interfaces/IAToken.sol";
 import "@aave/core-v3/contracts/interfaces/IReserveInterestRateStrategy.sol";
+import "@aave/safety-module/contracts/interfaces/IStakedAave.sol";
 import {DataTypes} from '@aave/core-v3/contracts/protocol/libraries/types/DataTypes.sol';
 
 contract GameContract is Ownable(msg.sender) {
     IERC20 public immutable aaveToken;  // Aave's interest-bearing token (aToken)
     IPool public immutable lendingPool;
     IERC20 public immutable ghoToken;  // GHO token address
-  
+    IStakedAave public immutable stakedAave;
 
     struct PlayerInfo {
         uint256 ranking;
         uint256 rewardPercentage;
-        uint256 aaveStake;  // Amount of aTokens staked
+        uint256 stakedAmount;  // Amount of aTokens staked
         uint256 items;
     }
 
@@ -35,11 +36,13 @@ contract GameContract is Ownable(msg.sender) {
     constructor(
         address _aaveToken,
         address _lendingPool,
-        address _ghoToken
+        address _ghoToken,
+        address _stakedAave
     ) {
         aaveToken = IERC20(_aaveToken);
         lendingPool = IPool(_lendingPool);
         ghoToken = IERC20(_ghoToken);
+        stakedAave = IStakedAave(_stakedAave);
     }
 
     function registerPlayer(uint256 _ranking, uint256 _rewardPercentage) external {
@@ -49,7 +52,7 @@ contract GameContract is Ownable(msg.sender) {
         players[msg.sender] = PlayerInfo({
             ranking: _ranking,
             rewardPercentage: _rewardPercentage,
-            aaveStake: 0,
+            stakedAmount: 0,
             items: 0
         });
 
@@ -78,18 +81,27 @@ contract GameContract is Ownable(msg.sender) {
         emit RewardAmountSet(_totalRewardAmount);
     }
 
-    function depositTokens(uint256 _amount) external {
-        require(_amount > 0, "Amount must be greater than 0");
+    function depositTokens(uint256 _amountOfDai, address _daiAddress) external {
+        require(_amountOfDai > 0, "Amount must be greater than 0");
         require(players[msg.sender].ranking != 0, "Player not registered");
 
+        IERC20 dai = IERC20(_daiAddress);
+        dai.approve(address(lendingPool), _amountOfDai);
+        lendingPool.supply(address(dai), _amountOfDai, address(msg.sender), 0);
+
         // Approve Aave to spend tokens on behalf of the contract
-        aaveToken.approve(address(lendingPool), _amount);
+        // aaveToken.approve(address(stakedAave), _amount);
 
-        // Deposit tokens into Aave to get aTokens
-        lendingPool.deposit(address(aaveToken), _amount, address(this), 0);
+        // Stake AAVE tokens in Safety Module to receive stkAAVE
+        // stakedAave.stake(address(msg.sender), _amount);
 
-        // Update player's aaveStake
-        players[msg.sender].aaveStake += _amount;
+
+        // Mint GHO (2 for variable interest rate mode)
+        lendingPool.borrow(address(ghoToken), _amountOfDai, 2, 0, address(msg.sender));
+
+
+        // Update player's stakedAmount
+        players[msg.sender].stakedAmount += _amountOfDai;
     }
 
     function withdrawFunds() external {
@@ -101,13 +113,13 @@ contract GameContract is Ownable(msg.sender) {
         require(totalAmount > 0, "No funds to withdraw");
 
         // Withdraw aTokens from Aave
-        lendingPool.withdraw(address(aaveToken), totalAmount, address(this));
+        stakedAave.redeem(address(msg.sender), stakedAave.balanceOf(msg.sender));
 
         // Borrow GHO tokens from Aave
-        borrowGHO(totalAmount);
+        // borrowGHO(totalAmount);
 
-        // Reset player's aaveStake
-        players[player].aaveStake = 0;
+        // Reset player's stakedAmount
+        players[player].stakedAmount = 0;
 
         emit FundsWithdrawn(player, totalAmount);
     }
@@ -121,7 +133,7 @@ contract GameContract is Ownable(msg.sender) {
     }
 
     function calculateWithdrawalAmount(address player) internal view returns (uint256) {
-        uint256 totalAmount = players[player].aaveStake * players[player].rewardPercentage / 100;
+        uint256 totalAmount = players[player].stakedAmount * players[player].rewardPercentage / 100;
         totalAmount += players[player].items; // Add additional logic for item rewards if needed
         return totalAmount;
     }
